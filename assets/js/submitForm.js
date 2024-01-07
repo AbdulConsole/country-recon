@@ -1,27 +1,31 @@
-    // Declare Var
-    let api = "https://restcountries.com/v3.1/name/";
-
-    // Grab the DOMs
-    const cityInput = document.getElementById('cityInput').value;
-    const resultContainer = document.getElementById('resultContainer');
-    const warningMessage = document.getElementById('warningMessage');
-    const countryNameElement = document.querySelector("[data-name]");
-    const capitalElement = document.querySelector("[data-capital]");
-    const populationElement = document.querySelector("[data-population]");
-    const currencyElement = document.querySelector("[data-currency]");
-    const regionElement = document.querySelector("[data-region]");
-    const subRegionElement = document.querySelector("[data-sub-region]");
-    const flag = document.querySelector("[data-flag]");
-    const form = document.getElementById('cityForm');
-
-
-    form.addEventListener('submit', function (event) { event.preventDefault(); submitForm(event); });
-
-
-
 function submitForm(event) {
     event.preventDefault();
+    var cityInput = document.getElementById('cityInput').value;
+    var resultContainer = document.getElementById('resultContainer');
+    var warningMessage = document.getElementById('warningMessage');
+    var countryNameElement = document.querySelector("[data-name]");
+    var capitalElement = document.querySelector("[data-capital]");
+    var populationElement = document.querySelector("[data-population]");
+    var currencyElement = document.querySelector("[data-currency]");
+    var regionElement = document.querySelector("[data-region]");
+    var subRegionElement = document.querySelector("[data-sub-region]");
+    const flag = document.querySelector("[data-flag]");
+
     if (cityInput.trim() !== '') {
+        // // Clear previous data
+        // countryNameElement.textContent = '';
+        // capitalElement.textContent = '';
+        // populationElement.textContent = '';
+        // currencyElement.textContent = '';
+        // regionElement.textContent = '';
+        // subRegionElement.textContent = '';
+
+        // Show result container and hide warning message
+        resultContainer.style.display = 'block';
+        warningMessage.style.display = 'none';
+
+        // Fetch country data based on city input
+        let api = "https://restcountries.com/v3.1/name/";
         fetch(api + cityInput).then((response) => {
             return response.json();
         }).then(([data]) => {
@@ -41,15 +45,13 @@ function submitForm(event) {
         }).catch((error) => {
             console.error('Error fetching country data:', error);
         });
-
-        // Show result container and hide warning message
-        resultContainer.style.display = 'block';
-        warningMessage.style.display = 'none';
-
-
     } else {
         // Show warning message and hide result container
         resultContainer.style.display = 'none';
         warningMessage.style.display = 'block';
     }
 }
+
+// function fetchCountryData(city) {
+    
+// }
