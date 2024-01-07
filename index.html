@@ -1,60 +1,120 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="assets/css/style.css">
     <title>City Recon!</title>
-  </head>
-  <body>
-    
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">City Recon</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">City Recon</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Features</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="#">Pricing</a>
                 </li>
             </ul>
             <span class="navbar-text">
                 search any of your desired city
             </span>
+        </div>
+    </div>
+</nav>
+
+<div class="mt-5 light bg-light">
+    <div class="container">
+        <form class="p-5" onsubmit="submitForm(event)">
+            <div class="input-group">
+                <span class="input-group-text" id="basic-addon1">Enter City to search</span>
+                <input id="cityInput" type="text" class="form-control" placeholder="City" aria-label="City" aria-describedby="basic-addon1" required>
+            </div>
+            <div class="row">
+                <div class="col-md-2 ms-md-auto">
+                    <div class="d-grid gap-2 mt-5">
+                        <button type="submit" class="btn btn-lg btn-primary">Find !</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div id="resultContainer" class="result container mt-2 mb-5" style="display: none;">
+            <div class="card bg-light">
+                <img src="https://cdn.britannica.com/68/5068-004-72A3F250/Flag-Nigeria.jpg" class="card-img-top p-2 flag-img" alt="Country Flag">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Capital</th>
+                                <th scope="col">Population</th>
+                                <th scope="col">Currency</th>
+                                <th scope="col">Region</th>
+                                <th scope="col">Sub-Region</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td scope="row">Federal Republic of Nigeria</td>
+                                <td>Abuja</td>
+                                <td>206,139,587</td>
+                                <td>NGN</td>
+                                <td>Africa</td>
+                                <td>Western African</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
-    </nav>
-
-
-
-
-
-
-    <nav class="navbar fixed-bottom navbar-dark bg-dark">
-        <div class="container justify-content-center">
-          <a class="navbar-brand" href="#">City Recon</a>
+        <div id="warningMessage" class="alert alert-danger mt-2" style="display: none;">
+            Please enter a city before searching.
         </div>
-    </nav>
+    </div>
+</div>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<nav class="navbar fixed-bottom navbar-dark bg-dark">
+    <div class="container justify-content-center">
+        <a class="navbar-brand" href="#">City Recon</a>
+    </div>
+</nav>
 
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-    -->
-  </body>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script>
+    function submitForm(event) {
+        event.preventDefault();
+        var cityInput = document.getElementById('cityInput').value;
+        var resultContainer = document.getElementById('resultContainer');
+        var warningMessage = document.getElementById('warningMessage');
+
+        if (cityInput.trim() !== '') {
+            // Show result container and hide warning message
+            resultContainer.style.display = 'block';
+            warningMessage.style.display = 'none';
+        } else {
+            // Show warning message and hide result container
+            resultContainer.style.display = 'none';
+            warningMessage.style.display = 'block';
+        }
+    }
+</script>
+
+</body>
 </html>
