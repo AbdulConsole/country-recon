@@ -12,14 +12,6 @@ function submitForm(event) {
     const flag = document.querySelector("[data-flag]");
 
     if (cityInput.trim() !== '') {
-        // // Clear previous data
-        // countryNameElement.textContent = '';
-        // capitalElement.textContent = '';
-        // populationElement.textContent = '';
-        // currencyElement.textContent = '';
-        // regionElement.textContent = '';
-        // subRegionElement.textContent = '';
-
         // Show result container and hide warning message
         resultContainer.style.display = 'block';
         warningMessage.style.display = 'none';
