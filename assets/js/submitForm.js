@@ -1,6 +1,6 @@
 function submitForm(event) {
     event.preventDefault();
-    var cityInput = document.getElementById('cityInput').value;
+    var CountryInput = document.getElementById('CountryInput').value;
     var resultContainer = document.getElementById('resultContainer');
     var warningMessage = document.getElementById('warningMessage');
     var countryNameElement = document.querySelector("[data-name]");
@@ -11,14 +11,14 @@ function submitForm(event) {
     var subRegionElement = document.querySelector("[data-sub-region]");
     const flag = document.querySelector("[data-flag]");
 
-    if (cityInput.trim() !== '') {
+    if (CountryInput.trim() !== '') {
         // Show result container and hide warning message
         resultContainer.style.display = 'block';
         warningMessage.style.display = 'none';
 
         // Fetch country data based on city input
         let api = "https://restcountries.com/v3.1/name/";
-        fetch(api + cityInput).then((response) => {
+        fetch(api + CountryInput).then((response) => {
             return response.json();
         }).then(([data]) => {
             if (data) {
